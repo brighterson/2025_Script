@@ -150,10 +150,16 @@ parse_arguments() {
                 exit 0
                 ;;
             -i|--input)
+                if [[ -z "${2:-}" ]]; then
+                    error_exit "选项 $1 需要参数 (Option $1 requires an argument)" 1
+                fi
                 INPUT_FILE="$2"
                 shift 2
                 ;;
             -o|--output)
+                if [[ -z "${2:-}" ]]; then
+                    error_exit "选项 $1 需要参数 (Option $1 requires an argument)" 1
+                fi
                 OUTPUT_FILE="$2"
                 shift 2
                 ;;
